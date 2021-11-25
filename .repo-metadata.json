@@ -1,0 +1,15 @@
+{
+    "name": "logging-servlet-initializer",
+    "name_pretty": "Cloud Logging Servlet Initializer",
+    "product_documentation": "https://cloud.google.com/logging/docs",
+    "api_description": "Java EE idiomatic servlet container initializer to capture Http request context.",
+    "client_documentation": "https://cloud.google.com/java/docs/reference/google-cloud-logging-servlet-initializer/latest/history",
+    "release_level": "alpha",
+    "language": "java",
+    "min_java_version": 8,
+    "repo": "googleapis/java-logging-servlet-initializer",
+    "repo_short": "java-logging-servlet-initializer",
+    "distribution_name": "com.google.cloud:google-cloud-logging-servlet-initializer",
+    "codeowner_team": "@googleapis/api-logging",
+    "api_id": "logging.googleapis.com"
+  }
