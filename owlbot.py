@@ -20,4 +20,6 @@ java.common_templates(excludes=[
     '.gitignore',
     '.github/CODEOWNERS',
     '.github/blunderbuss.yml',
+    'README.md',
     'CONTRIBUTING.md',
+])
