@@ -16,7 +16,10 @@
 
 package com.google.cloud.logging.servlet;
 
+import java.util.EnumSet;
 import java.util.Set;
+import javax.servlet.DispatcherType;
+import javax.servlet.FilterRegistration.Dynamic;
 import javax.servlet.ServletContainerInitializer;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -25,6 +28,7 @@ public class ContextCaptureInitializer implements ServletContainerInitializer {
 
   @Override
   public void onStartup(Set<Class<?>> c, ServletContext ctx) throws ServletException {
-    ctx.addListener(RequestListener.class);
+    Dynamic registration = ctx.addFilter("RequestContextFilter", RequestContextFilter.class);
+    registration.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), false, "/*");
   }
 }

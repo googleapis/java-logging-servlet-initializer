@@ -16,11 +16,21 @@
 
 package com.google.cloud.logging.servlet;
 
-public class RequestListenerTest {
+import org.junit.Test;
+
+@SuppressWarnings("serial")
+public class RequestContextFilterTest extends RequestContextFilter {
+
+  @Test
+  public void testHttpRequestContext() {
+
+  }
   // Test that onDestroy cleans the context
-  // Test that onInitialize set the context with the right trace and span and httprequest info
-  //   - one test for request info
-  //   - one test for w3c trace
-  //   - one test for gcp trace
-  //   - one test for w3c AND gcp trace (w3c should be set)
+  // Test that onInitialize set the context with the right trace and span and
+  // httprequest info
+  // - one test for request info
+  // - one test for w3c trace
+  // - one test for gcp trace
+  // - one test for w3c AND gcp trace (w3c should be set)
+
 }

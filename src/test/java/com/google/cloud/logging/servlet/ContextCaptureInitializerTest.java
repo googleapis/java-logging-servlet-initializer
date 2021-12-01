@@ -17,5 +17,7 @@
 package com.google.cloud.logging.servlet;
 
 public class ContextCaptureInitializerTest {
-  // TODO: validate that the call to onStart adds listener
+  public void testRegistration() {
+    
+  }
 }
