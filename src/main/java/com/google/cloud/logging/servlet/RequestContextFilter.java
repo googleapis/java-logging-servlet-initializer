@@ -26,7 +26,6 @@ import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 public class RequestContextFilter extends HttpFilter {
   private static final long serialVersionUID = 1517497440413815384L;
   private static final String CLOUD_TRACE_CONTEXT_HEADER = "x-cloud-trace-context";
@@ -37,7 +36,7 @@ public class RequestContextFilter extends HttpFilter {
   @Override
   protected void doFilter(HttpServletRequest req, HttpServletResponse resp, FilterChain chain)
       throws IOException, ServletException {
-      Context oldContext = contextHandler.getCurrentContext();
+    Context oldContext = contextHandler.getCurrentContext();
     try {
       HttpRequest logHttpRequest = generateLogEntryHttpRequest(req, resp);
       Context.Builder builder = Context.newBuilder().setRequest(logHttpRequest);
@@ -45,7 +44,7 @@ public class RequestContextFilter extends HttpFilter {
       if (tracingHeader != null) {
         builder.loadW3CTraceParentContext(tracingHeader);
       } else {
-        builder.loadW3CTraceParentContext(req.getHeader(CLOUD_TRACE_CONTEXT_HEADER));
+        builder.loadCloudTraceContext(req.getHeader(CLOUD_TRACE_CONTEXT_HEADER));
       }
       contextHandler.setCurrentContext(builder.build());
       super.doFilter(req, resp, chain);
@@ -66,11 +65,10 @@ public class RequestContextFilter extends HttpFilter {
         .setRequestMethod(HttpRequest.RequestMethod.valueOf(req.getMethod()))
         .setRequestSize(req.getContentLengthLong())
         .setRequestUrl(req.getRequestURL().append("?").append(req.getQueryString()).toString())
-        .setResponseSize(1)
         .setServerIp(req.getLocalAddr())
         .setUserAgent(req.getHeader("user-agent"));
     if (resp != null) {
-      builder.setStatus(resp.getStatus());
+      builder.setStatus(resp.getStatus()).setResponseSize(resp.getBufferSize());
     }
     return builder.build();
   }

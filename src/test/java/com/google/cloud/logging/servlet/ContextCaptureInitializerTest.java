@@ -16,8 +16,39 @@
 
 package com.google.cloud.logging.servlet;
 
+import static org.easymock.EasyMock.createStrictMock;
+import static org.easymock.EasyMock.expect;
+import static org.easymock.EasyMock.expectLastCall;
+import static org.easymock.EasyMock.replay;
+import static org.easymock.EasyMock.verify;
+
+import java.util.EnumSet;
+import javax.servlet.DispatcherType;
+import javax.servlet.FilterRegistration.Dynamic;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import org.junit.Test;
+
 public class ContextCaptureInitializerTest {
-  public void testRegistration() {
-    
+
+  /**
+   * Validates that {@link ContextCaptureInitializer} registers {@link RequestContextFilter} to be
+   * called on all requests.
+   */
+  @Test
+  public void testRegistration() throws ServletException {
+    ServletContext mockedServletContext = createStrictMock(ServletContext.class);
+    Dynamic mockedDynamic = createStrictMock(Dynamic.class);
+    expect(mockedServletContext.addFilter("RequestContextFilter", RequestContextFilter.class))
+        .andReturn(mockedDynamic)
+        .once();
+    mockedDynamic.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), false, "/*");
+    expectLastCall().once();
+    replay(mockedServletContext, mockedDynamic);
+
+    ContextCaptureInitializer inst = new ContextCaptureInitializer();
+    inst.onStartup(null, mockedServletContext);
+
+    verify(mockedServletContext, mockedDynamic);
   }
 }
