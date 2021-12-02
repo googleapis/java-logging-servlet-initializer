@@ -17,7 +17,6 @@
 package com.google.cloud.logging.servlet;
 
 import static org.easymock.EasyMock.anyObject;
-import static org.easymock.EasyMock.anyString;
 import static org.easymock.EasyMock.createMock;
 import static org.easymock.EasyMock.createNiceMock;
 import static org.easymock.EasyMock.expect;
@@ -34,7 +33,7 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.easymock.IAnswer;
+import org.junit.Before;
 import org.junit.Test;
 
 @SuppressWarnings("serial")
@@ -57,21 +56,39 @@ public class RequestContextFilterTest extends RequestContextFilter {
   private static final String MOCKED_W3C_TRACE_ID = "mocked_cloud_trace";
   private static final String MOCKED_W3C_SPAN_ID = "mocked_cloud_span";
 
-  private static final HttpRequest ExpectedHttpRequest = HttpRequest.newBuilder().setReferer(MOCKED_REFERER)
-      .setRemoteIp(MOCKED_REMOTE_ADDR).setRequestMethod(HttpRequest.RequestMethod.valueOf(MOCKED_METHOD))
-      .setRequestSize(MOCKED_CONTENT_LENGTH).setRequestUrl(MOCKED_REQUEST_FULL_URL).setResponseSize(MOCKED_BUFFER_SIZE)
-      .setServerIp(MOCKED_LOCAL_ADDR).setStatus(MOCKED_STATUS).setUserAgent(MOCKED_USER_AGENT).build();
+  private static final HttpRequest ExpectedHttpRequest =
+      HttpRequest.newBuilder()
+          .setReferer(MOCKED_REFERER)
+          .setRemoteIp(MOCKED_REMOTE_ADDR)
+          .setRequestMethod(HttpRequest.RequestMethod.valueOf(MOCKED_METHOD))
+          .setRequestSize(MOCKED_CONTENT_LENGTH)
+          .setRequestUrl(MOCKED_REQUEST_FULL_URL)
+          .setResponseSize(MOCKED_BUFFER_SIZE)
+          .setServerIp(MOCKED_LOCAL_ADDR)
+          .setStatus(MOCKED_STATUS)
+          .setUserAgent(MOCKED_USER_AGENT)
+          .build();
   private final ContextHandler contextHandler = new ContextHandler();
+  private HttpServletRequest mockedRequest;
+  private HttpServletResponse mockedResponse;
+  private FilterChain mockedChain;
+  private Context testingContext;
+
+  @Before
+  public void setup() {
+    mockedRequest = mockServletRequest();
+    mockedResponse = mockServletResponse();
+    mockedChain = createMock(FilterChain.class);
+  }
 
   @Test
   public void testContextCleanup() throws IOException, ServletException {
-    HttpServletRequest req = mockServletRequest();
-    HttpServletResponse resp = mockServletResponse();
-    FilterChain chain = mockFilterChain(null);
-    replay(req, resp, chain);
+    mockedChain.doFilter(anyObject(), anyObject());
+    expectLastCall();
+    replay(mockedRequest, mockedResponse, mockedChain);
 
     Context contextBeforeFilter = contextHandler.getCurrentContext();
-    doFilter(req, resp, chain);
+    doFilter(mockedRequest, mockedResponse, mockedChain);
     Context contextAfterFilter = contextHandler.getCurrentContext();
 
     assertEquals(contextBeforeFilter, contextAfterFilter);
@@ -79,78 +96,58 @@ public class RequestContextFilterTest extends RequestContextFilter {
 
   @Test
   public void testParsingRequestAndResponseData() throws IOException, ServletException {
-    HttpServletRequest req = mockServletRequest();
-    HttpServletResponse resp = mockServletResponse();
-    final Context[] context = new Context[1];
-    FilterChain chain = mockFilterChain(() -> {
-      context[0] = contextHandler.getCurrentContext();
-      return null;
-    });
-    replay(req, resp, chain);
+    interceptCurrentContext();
+    replay(mockedRequest, mockedResponse, mockedChain);
 
-    doFilter(req, resp, chain);
+    doFilter(mockedRequest, mockedResponse, mockedChain);
 
-    assertEquals(ExpectedHttpRequest, context[0].getHttpRequest());
-    assertNull(context[0].getTraceId());
-    assertNull(context[0].getSpanId());
+    assertEquals(ExpectedHttpRequest, testingContext.getHttpRequest());
+    assertNull(testingContext.getTraceId());
+    assertNull(testingContext.getSpanId());
   }
 
   @Test
   public void testParsingW3CTracingHeader() throws IOException, ServletException {
-    HttpServletRequest req = mockServletRequest();
-    HttpServletResponse resp = mockServletResponse();
-    final Context[] context = new Context[1];
-    FilterChain chain = mockFilterChain(() -> {
-      context[0] = contextHandler.getCurrentContext();
-      return null;
-    });
-    expect(req.getHeader(W3C_TRACEPARENT_HEADER)).andReturn(TraceHeaderData.W3C_TRACE_HEADER.HeaderValue);
-    replay(req, resp, chain);
+    expect(mockedRequest.getHeader(W3C_TRACEPARENT_HEADER))
+        .andReturn(TraceHeaderData.W3C_TRACE_HEADER.HeaderValue);
+    interceptCurrentContext();
+    replay(mockedRequest, mockedResponse, mockedChain);
 
-    doFilter(req, resp, chain);
+    doFilter(mockedRequest, mockedResponse, mockedChain);
 
-    assertEquals(ExpectedHttpRequest, context[0].getHttpRequest());
-    assertEquals(TraceHeaderData.W3C_TRACE_HEADER.TraceId, context[0].getTraceId());
-    assertEquals(TraceHeaderData.W3C_TRACE_HEADER.SpanId, context[0].getSpanId());
+    assertEquals(ExpectedHttpRequest, testingContext.getHttpRequest());
+    assertEquals(TraceHeaderData.W3C_TRACE_HEADER.TraceId, testingContext.getTraceId());
+    assertEquals(TraceHeaderData.W3C_TRACE_HEADER.SpanId, testingContext.getSpanId());
   }
 
   @Test
   public void testParsingCloudTracingHeader() throws IOException, ServletException {
-    HttpServletRequest req = mockServletRequest();
-    HttpServletResponse resp = mockServletResponse();
-    final Context[] context = new Context[1];
-    FilterChain chain = mockFilterChain(() -> {
-      context[0] = contextHandler.getCurrentContext();
-      return null;
-    });
-    expect(req.getHeader(CLOUD_TRACE_HEADER)).andReturn(TraceHeaderData.CLOUD_TRACE_HEADER.HeaderValue);
-    replay(req, resp, chain);
+    expect(mockedRequest.getHeader(CLOUD_TRACE_HEADER))
+        .andReturn(TraceHeaderData.CLOUD_TRACE_HEADER.HeaderValue);
+    interceptCurrentContext();
+    replay(mockedRequest, mockedResponse, mockedChain);
 
-    doFilter(req, resp, chain);
+    doFilter(mockedRequest, mockedResponse, mockedChain);
 
-    assertEquals(ExpectedHttpRequest, context[0].getHttpRequest());
-    assertEquals(TraceHeaderData.CLOUD_TRACE_HEADER.TraceId, context[0].getTraceId());
-    assertEquals(TraceHeaderData.CLOUD_TRACE_HEADER.SpanId, context[0].getSpanId());
+    assertEquals(ExpectedHttpRequest, testingContext.getHttpRequest());
+    assertEquals(TraceHeaderData.CLOUD_TRACE_HEADER.TraceId, testingContext.getTraceId());
+    assertEquals(TraceHeaderData.CLOUD_TRACE_HEADER.SpanId, testingContext.getSpanId());
   }
 
   @Test
   public void testParsingW3CAndCloudTracingHeaders() throws IOException, ServletException {
-    HttpServletRequest req = mockServletRequest();
-    HttpServletResponse resp = mockServletResponse();
-    final Context[] context = new Context[1];
-    FilterChain chain = mockFilterChain(() -> {
-      context[0] = contextHandler.getCurrentContext();
-      return null;
-    });
-    expect(req.getHeader(W3C_TRACEPARENT_HEADER)).andReturn(TraceHeaderData.W3C_TRACE_HEADER.HeaderValue);
-    expect(req.getHeader(CLOUD_TRACE_HEADER)).andReturn(TraceHeaderData.CLOUD_TRACE_HEADER.HeaderValue);
-    replay(req, resp, chain);
+    expect(mockedRequest.getHeader(W3C_TRACEPARENT_HEADER))
+        .andReturn(TraceHeaderData.W3C_TRACE_HEADER.HeaderValue);
+    expect(mockedRequest.getHeader(CLOUD_TRACE_HEADER))
+        .andReturn(TraceHeaderData.CLOUD_TRACE_HEADER.HeaderValue);
+    interceptCurrentContext();
+    replay(mockedRequest, mockedResponse, mockedChain);
 
-    doFilter(req, resp, chain);
+    doFilter(mockedRequest, mockedResponse, mockedChain);
 
-    assertEquals(ExpectedHttpRequest, context[0].getHttpRequest());
-    assertEquals(TraceHeaderData.W3C_TRACE_HEADER.TraceId, context[0].getTraceId());
-    assertEquals(TraceHeaderData.W3C_TRACE_HEADER.SpanId, context[0].getSpanId());
+    assertEquals(ExpectedHttpRequest, testingContext.getHttpRequest());
+    assertEquals(TraceHeaderData.W3C_TRACE_HEADER.TraceId, testingContext.getTraceId());
+    assertEquals(TraceHeaderData.W3C_TRACE_HEADER.SpanId, testingContext.getSpanId());
   }
 
   private HttpServletRequest mockServletRequest() {
@@ -175,20 +172,25 @@ public class RequestContextFilterTest extends RequestContextFilter {
     return response;
   }
 
-  private FilterChain mockFilterChain(IAnswer<? extends Object> doFilterAnswer) throws IOException, ServletException {
-    FilterChain chain = createMock(FilterChain.class);
-    chain.doFilter(anyObject(), anyObject());
-    if (doFilterAnswer != null) {
-      expectLastCall().andAnswer(doFilterAnswer);
-    } else {
-      expectLastCall();
-    }
-    return chain;
+  private void interceptCurrentContext() throws IOException, ServletException {
+    mockedChain.doFilter(anyObject(), anyObject());
+    expectLastCall()
+        .andAnswer(
+            () -> {
+              testingContext = contextHandler.getCurrentContext();
+              return null;
+            });
   }
 
   private enum TraceHeaderData {
-    W3C_TRACE_HEADER("00-"+MOCKED_W3C_TRACE_ID+"-"+MOCKED_W3C_SPAN_ID+"-flags", MOCKED_W3C_TRACE_ID, MOCKED_W3C_SPAN_ID),
-    CLOUD_TRACE_HEADER(MOCKED_CLOUD_TRACE_ID+"/"+MOCKED_CLOUD_SPAN_ID+";o=TRACE_TRUE", MOCKED_CLOUD_TRACE_ID, MOCKED_CLOUD_SPAN_ID);
+    W3C_TRACE_HEADER(
+        "00-" + MOCKED_W3C_TRACE_ID + "-" + MOCKED_W3C_SPAN_ID + "-flags",
+        MOCKED_W3C_TRACE_ID,
+        MOCKED_W3C_SPAN_ID),
+    CLOUD_TRACE_HEADER(
+        MOCKED_CLOUD_TRACE_ID + "/" + MOCKED_CLOUD_SPAN_ID + ";o=TRACE_TRUE",
+        MOCKED_CLOUD_TRACE_ID,
+        MOCKED_CLOUD_SPAN_ID);
 
     public final String HeaderValue;
     public final String TraceId;
