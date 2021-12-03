@@ -30,5 +30,6 @@ public class ContextCaptureInitializer implements ServletContainerInitializer {
   public void onStartup(Set<Class<?>> c, ServletContext ctx) throws ServletException {
     Dynamic registration = ctx.addFilter("RequestContextFilter", RequestContextFilter.class);
     registration.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), false, "/*");
+    registration.setAsyncSupported(true);
   }
 }

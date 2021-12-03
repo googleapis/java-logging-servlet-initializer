@@ -44,6 +44,8 @@ public class ContextCaptureInitializerTest {
         .once();
     mockedDynamic.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), false, "/*");
     expectLastCall().once();
+    mockedDynamic.setAsyncSupported(true);
+    expectLastCall().once();
     replay(mockedServletContext, mockedDynamic);
 
     ContextCaptureInitializer inst = new ContextCaptureInitializer();
