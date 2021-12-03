@@ -35,7 +35,7 @@
     <junit-jupiter.version>5.8.2</junit-jupiter.version>
     <jetty.version>9.4.44.v20210927</jetty.version>
     <tomcat.version>9.0.45</tomcat.version>
-    <undertow.version>2.2.7.Final</undertow.version>
+    <undertow.version>2.2.14.Final</undertow.version>
   </properties>
 
   <parent>
