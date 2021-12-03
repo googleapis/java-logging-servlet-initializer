@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.cloud.logging.servlet.container;
+package com.google.cloud.logging.servlet.it.container;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletContainerInitializer;

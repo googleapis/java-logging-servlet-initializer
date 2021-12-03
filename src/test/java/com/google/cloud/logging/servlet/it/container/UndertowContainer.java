@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.cloud.logging.servlet.container;
+package com.google.cloud.logging.servlet.it.container;
 
 import static io.undertow.servlet.Servlets.defaultContainer;
 import static io.undertow.servlet.Servlets.deployment;
