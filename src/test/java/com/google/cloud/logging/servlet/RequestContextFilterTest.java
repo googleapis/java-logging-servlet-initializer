@@ -53,8 +53,8 @@ public class RequestContextFilterTest extends RequestContextFilter {
   private static final Integer MOCKED_BUFFER_SIZE = 100;
   private static final String MOCKED_CLOUD_TRACE_ID = "mocked_cloud_trace";
   private static final String MOCKED_CLOUD_SPAN_ID = "mocked_cloud_span";
-  private static final String MOCKED_W3C_TRACE_ID = "mocked_cloud_trace";
-  private static final String MOCKED_W3C_SPAN_ID = "mocked_cloud_span";
+  private static final String MOCKED_W3C_TRACE_ID = "0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a";
+  private static final String MOCKED_W3C_SPAN_ID = "1b1b1b1b1b1b1b1b";
 
   private static final HttpRequest ExpectedHttpRequest =
       HttpRequest.newBuilder()
@@ -184,7 +184,7 @@ public class RequestContextFilterTest extends RequestContextFilter {
 
   private enum TraceHeaderData {
     W3C_TRACE_HEADER(
-        "00-" + MOCKED_W3C_TRACE_ID + "-" + MOCKED_W3C_SPAN_ID + "-flags",
+        "00-" + MOCKED_W3C_TRACE_ID + "-" + MOCKED_W3C_SPAN_ID + "-00",
         MOCKED_W3C_TRACE_ID,
         MOCKED_W3C_SPAN_ID),
     CLOUD_TRACE_HEADER(
