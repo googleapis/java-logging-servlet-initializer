@@ -33,6 +33,7 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -62,7 +63,7 @@ public class RequestContextFilterTest extends RequestContextFilter {
           .setRemoteIp(MOCKED_REMOTE_ADDR)
           .setRequestMethod(HttpRequest.RequestMethod.valueOf(MOCKED_METHOD))
           .setRequestSize(MOCKED_CONTENT_LENGTH)
-          .setRequestUrl(MOCKED_REQUEST_FULL_URL)
+          .setRequestUrl(MOCKED_REQUEST_URL)
           .setResponseSize(MOCKED_BUFFER_SIZE)
           .setServerIp(MOCKED_LOCAL_ADDR)
           .setStatus(MOCKED_STATUS)
@@ -79,6 +80,11 @@ public class RequestContextFilterTest extends RequestContextFilter {
     mockedRequest = mockServletRequest();
     mockedResponse = mockServletResponse();
     mockedChain = createMock(FilterChain.class);
+  }
+
+  @AfterEach
+  public void cleanup() {
+    testingContext = null;
   }
 
   @Test
@@ -104,6 +110,19 @@ public class RequestContextFilterTest extends RequestContextFilter {
     assertEquals(ExpectedHttpRequest, testingContext.getHttpRequest());
     assertNull(testingContext.getTraceId());
     assertNull(testingContext.getSpanId());
+  }
+
+  @Test
+  public void testParsingRequestWithQueryParams() throws IOException, ServletException {
+    HttpRequest expectedHttpRequestWithParams =
+        ExpectedHttpRequest.toBuilder().setRequestUrl(MOCKED_REQUEST_FULL_URL).build();
+    expect(mockedRequest.getQueryString()).andReturn(MOCKED_QUERY);
+    interceptCurrentContext();
+    replay(mockedRequest, mockedResponse, mockedChain);
+
+    doFilter(mockedRequest, mockedResponse, mockedChain);
+
+    assertEquals(expectedHttpRequestWithParams, testingContext.getHttpRequest());
   }
 
   @Test
@@ -158,7 +177,6 @@ public class RequestContextFilterTest extends RequestContextFilter {
     expect(request.getHeader("user-agent")).andReturn(MOCKED_USER_AGENT);
     expect(request.getRemoteAddr()).andReturn(MOCKED_REMOTE_ADDR);
     expect(request.getMethod()).andReturn(MOCKED_METHOD);
-    expect(request.getQueryString()).andReturn(MOCKED_QUERY);
     expect(request.getRequestURL()).andReturn(new StringBuffer(MOCKED_REQUEST_URL));
     expect(request.getContentLengthLong()).andReturn(MOCKED_CONTENT_LENGTH);
     expect(request.getLocalAddr()).andReturn(MOCKED_LOCAL_ADDR);

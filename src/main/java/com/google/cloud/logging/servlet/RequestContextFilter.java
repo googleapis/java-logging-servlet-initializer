@@ -19,6 +19,7 @@ package com.google.cloud.logging.servlet;
 import com.google.cloud.logging.Context;
 import com.google.cloud.logging.ContextHandler;
 import com.google.cloud.logging.HttpRequest;
+import com.google.common.base.Strings;
 import java.io.IOException;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -64,12 +65,20 @@ public class RequestContextFilter extends HttpFilter {
         .setRemoteIp(req.getRemoteAddr())
         .setRequestMethod(HttpRequest.RequestMethod.valueOf(req.getMethod()))
         .setRequestSize(req.getContentLengthLong())
-        .setRequestUrl(req.getRequestURL().append("?").append(req.getQueryString()).toString())
+        .setRequestUrl(composeFullUrl(req))
         .setServerIp(req.getLocalAddr())
         .setUserAgent(req.getHeader("user-agent"));
     if (resp != null) {
       builder.setStatus(resp.getStatus()).setResponseSize(resp.getBufferSize());
     }
     return builder.build();
+  }
+
+  private static String composeFullUrl(HttpServletRequest req) {
+    String query = req.getQueryString();
+    if (Strings.isNullOrEmpty(query)) {
+      return req.getRequestURL().toString();
+    }
+    return req.getRequestURL().append("?").append(query).toString();
   }
 }
