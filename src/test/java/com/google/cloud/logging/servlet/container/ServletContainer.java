@@ -20,9 +20,12 @@ import javax.servlet.Servlet;
 import javax.servlet.ServletContainerInitializer;
 
 public interface ServletContainer {
-    void start() throws Exception;
-    void stop() throws Exception;
+  void start() throws Exception;
 
-    void addServlet(Class<? extends Servlet> servletClass, String path);
-    void addServletContainerInitializer(Class<? extends ServletContainerInitializer> sciClass) throws Exception;
+  void stop() throws Exception;
+
+  void addServlet(Class<? extends Servlet> servletClass, String path);
+
+  void addServletContainerInitializer(Class<? extends ServletContainerInitializer> sciClass)
+      throws Exception;
 }
