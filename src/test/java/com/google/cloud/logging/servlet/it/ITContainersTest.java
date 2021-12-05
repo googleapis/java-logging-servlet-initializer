@@ -16,8 +16,8 @@
 
 package com.google.cloud.logging.servlet.it;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import com.google.cloud.logging.Context;
 import com.google.cloud.logging.ContextHandler;
@@ -28,6 +28,8 @@ import com.google.cloud.logging.servlet.it.container.TomcatContainer;
 import com.google.cloud.logging.servlet.it.container.UndertowContainer;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.Collection;
 import javax.servlet.AsyncContext;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,15 +37,18 @@ import javax.servlet.http.HttpServletResponse;
 import org.eclipse.jetty.client.HttpClient;
 import org.eclipse.jetty.client.api.ContentResponse;
 import org.eclipse.jetty.client.api.Request;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
 
 /**
  * Set of unit tests to validate behavior of the servlet filter in popular Web servers: Tomcat,
  * Jetty, Undertow
  */
+@RunWith(Parameterized.class)
 public class ITContainersTest {
   private static final String TEST_URL = "http://localhost:8080/";
   private static final String TEST_ASYNC_URL = TEST_URL + "async";
@@ -56,13 +61,28 @@ public class ITContainersTest {
   private HttpClient client;
   private ServletContainer container;
 
-  @BeforeEach
+  @Parameters
+  @SuppressWarnings("unchecked")
+  public static Collection<Class<? extends ServletContainer>> data() {
+    final Class<?>[] WEB_SERVER_CONTAINERS = {
+      JettyContainer.class, TomcatContainer.class, UndertowContainer.class
+    };
+    return Arrays.asList((Class<? extends ServletContainer>[]) WEB_SERVER_CONTAINERS);
+  }
+
+  private final Class<? extends ServletContainer> containerClass;
+
+  public ITContainersTest(Class<? extends ServletContainer> containerClass) {
+    this.containerClass = containerClass;
+  }
+
+  @Before
   public void setup() throws Exception {
     client = new HttpClient();
     client.start();
   }
 
-  @AfterEach
+  @After
   public void cleanup() throws Exception {
     client.stop();
     if (container != null) {
@@ -97,9 +117,8 @@ public class ITContainersTest {
   }
 
   /** Test regular request that is executed synchronously in the request serving thread. */
-  @ValueSource(classes = {JettyContainer.class, TomcatContainer.class, UndertowContainer.class})
-  @ParameterizedTest
-  public void testRequest(Class<? extends ServletContainer> containerClass) throws Exception {
+  @Test
+  public void testRequest() throws Exception {
     container = containerClass.getDeclaredConstructor().newInstance();
     container.addServletContainerInitializer(ContextCaptureInitializer.class);
     container.addServlet(TestServlet.class, new URL(TEST_URL).getPath());
@@ -116,9 +135,8 @@ public class ITContainersTest {
   }
 
   /** Test regular request that is executed synchronously in the request serving thread. */
-  @ValueSource(classes = {JettyContainer.class, TomcatContainer.class, UndertowContainer.class})
-  @ParameterizedTest
-  public void testAsyncRequest(Class<? extends ServletContainer> containerClass) throws Exception {
+  @Test
+  public void testAsyncRequest() throws Exception {
     container = containerClass.getDeclaredConstructor().newInstance();
     container.addServletContainerInitializer(ContextCaptureInitializer.class);
     container.addServlet(TestServlet.class, "/");

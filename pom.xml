@@ -32,7 +32,6 @@
     <easymock.version>3.6</easymock.version>
     <logging.version>3.5.0</logging.version>
     <jakarta.servlet.api.version>4.0.4</jakarta.servlet.api.version>  
-    <junit-jupiter.version>5.8.2</junit-jupiter.version>
     <jetty.version>9.4.44.v20210927</jetty.version>
     <tomcat.version>9.0.45</tomcat.version>
     <undertow.version>2.2.7.Final</undertow.version>
@@ -106,21 +105,9 @@
 
     <!--=========== Test Dependencies ==============-->
     <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-api</artifactId>
-        <version>${junit-jupiter.version}</version>
-        <scope>test</scope>
-    </dependency>
-    <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-params</artifactId>
-        <version>${junit-jupiter.version}</version>
-        <scope>test</scope>
-    </dependency>
-    <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-engine</artifactId>
-        <version>${junit-jupiter.version}</version>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.13.2</version>
         <scope>test</scope>
     </dependency>
     <dependency>
@@ -246,28 +233,6 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>flatten-maven-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-          <configuration>
-            <!-- ignore JUnit5 engine dependency since it is loaded implicilty -->
-            <ignoredUnusedDeclaredDependencies>
-              <ignoredUsedUndeclaredDependency>org.junit.jupiter:junit-jupiter-engine</ignoredUsedUndeclaredDependency>
-            </ignoredUnusedDeclaredDependencies>
-          </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.0.0-M4</version>
-        <dependencies>
-          <dependency>
-            <groupId>org.apache.maven.surefire</groupId>
-            <artifactId>surefire-junit-platform</artifactId>
-            <version>3.0.0-M4</version>
-          </dependency>
-        </dependencies>
       </plugin>
     </plugins>
   </build>
