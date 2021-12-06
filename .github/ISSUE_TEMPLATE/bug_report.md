@@ -10,8 +10,8 @@ Thanks for stopping by to let us know something could be better!
 
 Please run down the following list and make sure you've tried the usual "quick fixes":
 
-- [Search the issues](https://github.com/googleapis/java-logging-servlet-initializer/issues) already opened
-- Check for answers on [StackOverflow](http://stackoverflow.com/questions/tagged/google-cloud-platform)
+  - Search the issues already opened: https://github.com/googleapis/java-logging-servlet-initializer/issues
+  - Check for answers on StackOverflow: http://stackoverflow.com/questions/tagged/google-cloud-platform
 
 If you are still having issues, please include as much information as possible:
 
@@ -21,7 +21,7 @@ If you are still having issues, please include as much information as possible:
    General, Core, and Other are also allowed as types
 2. OS type and version:
 3. Java version:
-4. logging-logback version(s):
+4. logging-servlet-initializer version(s):
 
 #### Steps to reproduce
 
@@ -35,8 +35,7 @@ If you are still having issues, please include as much information as possible:
 ```
 
 #### Stack trace
-
-```text
+```
 Any relevant stacktrace here.
 ```
 
@@ -45,6 +44,7 @@ Any relevant stacktrace here.
 - ?
 
 #### Any additional information below
+
 
 Following these steps guarantees the quickest resolution possible.
 
