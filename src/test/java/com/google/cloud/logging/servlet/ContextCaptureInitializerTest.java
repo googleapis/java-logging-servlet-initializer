@@ -27,7 +27,7 @@ import javax.servlet.DispatcherType;
 import javax.servlet.FilterRegistration.Dynamic;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 public class ContextCaptureInitializerTest {
 
