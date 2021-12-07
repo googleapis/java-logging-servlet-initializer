@@ -51,10 +51,7 @@
         "^com.google.truth:truth",
         "^org.mockito:mockito-core",
         "^org.objenesis:objenesis",
-        "^com.google.cloud:google-cloud-conformance-tests",
-        "^org.eclipse.jetty:",
-        "^org.apache.tomcat.embed:tomcat-embed-core",
-        "^io.undertow:"
+        "^com.google.cloud:google-cloud-conformance-tests"
       ],
       "semanticCommitType": "test",
       "semanticCommitScope": "deps"
