@@ -20,6 +20,11 @@ java.common_templates(excludes=[
     '.gitignore',
     '.github/CODEOWNERS',
     '.github/blunderbuss.yml',
+    # README.md is excluded because its structure differs from usual template
+    # of the client libraries
     'README.md',
     'CONTRIBUTING.md',
+    # renovate.json is excluded to preserve fixed versions for web server dependencies
+    # used for integration tests
+    'renovate.json'
 ])
