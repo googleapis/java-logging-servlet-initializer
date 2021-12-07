@@ -25,14 +25,11 @@
 
 
   <dependencies>
-    <!-- [START logging-servlet-initializer_install_without_bom] -->
     <dependency>
       <groupId>com.google.cloud</groupId>
       <artifactId>google-cloud-logging-servlet-initializer</artifactId>
       <version>0.0.0</version>
     </dependency>
-    <!-- [END logging-servlet-initializer_install_without_bom] -->
-
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

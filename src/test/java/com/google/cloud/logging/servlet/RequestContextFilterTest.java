@@ -22,8 +22,8 @@ import static org.easymock.EasyMock.createNiceMock;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.EasyMock.replay;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import com.google.cloud.logging.Context;
 import com.google.cloud.logging.ContextHandler;
@@ -33,9 +33,9 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 @SuppressWarnings("serial")
 public class RequestContextFilterTest extends RequestContextFilter {
@@ -75,14 +75,14 @@ public class RequestContextFilterTest extends RequestContextFilter {
   private FilterChain mockedChain;
   private Context testingContext;
 
-  @BeforeEach
+  @Before
   public void setup() {
     mockedRequest = mockServletRequest();
     mockedResponse = mockServletResponse();
     mockedChain = createMock(FilterChain.class);
   }
 
-  @AfterEach
+  @After
   public void cleanup() {
     testingContext = null;
   }
