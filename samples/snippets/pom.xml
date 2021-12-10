@@ -14,7 +14,7 @@
   <parent>
     <groupId>com.google.cloud.samples</groupId>
     <artifactId>shared-configuration</artifactId>
-    <version>1.0.12</version>
+    <version>1.2.0</version>
   </parent>
 
   <properties>
@@ -28,7 +28,7 @@
     <dependency>
       <groupId>com.google.cloud</groupId>
       <artifactId>google-cloud-logging-servlet-initializer</artifactId>
-      <version>0.0.0</version>
+      <version>0.1.0-aplha</version>
     </dependency>
 
     <dependency>
