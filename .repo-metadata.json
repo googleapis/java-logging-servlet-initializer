@@ -11,5 +11,6 @@
     "repo_short": "java-logging-servlet-initializer",
     "distribution_name": "com.google.cloud:google-cloud-logging-servlet-initializer",
     "codeowner_team": "@googleapis/api-logging",
+    "library_type": "OTHER",
     "api_id": "logging.googleapis.com"
   }
