@@ -1,5 +1,5 @@
 {
-    "name": "logging-servlet-initializer",
+    "api_shortname": "logging-servlet-initializer",
     "name_pretty": "Cloud Logging Servlet Initializer",
     "product_documentation": "https://cloud.google.com/logging/docs",
     "api_description": "Java EE idiomatic servlet container initializer to capture Http request context.",
