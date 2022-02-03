@@ -1,5 +1,19 @@
 # Changelog
 
+### [0.1.4-alpha](https://github.com/googleapis/java-logging-servlet-initializer/compare/v0.1.2...v0.1.4-alpha) (2022-02-03)
+
+
+### Dependencies
+
+* **java:** update actions/github-script action to v5 ([#1339](https://github.com/googleapis/java-logging-servlet-initializer/issues/1339)) ([#55](https://github.com/googleapis/java-logging-servlet-initializer/issues/55)) ([e22ee73](https://github.com/googleapis/java-logging-servlet-initializer/commit/e22ee73531e282aaa8a071eef080a1084f2e06db))
+* update dependency com.google.cloud:google-cloud-logging to v3.6.1 ([#51](https://github.com/googleapis/java-logging-servlet-initializer/issues/51)) ([f15266a](https://github.com/googleapis/java-logging-servlet-initializer/commit/f15266a59ad591e277668aa8b648a2a46d136d73))
+* update dependency com.google.cloud:google-cloud-shared-dependencies to v2.7.0 ([#58](https://github.com/googleapis/java-logging-servlet-initializer/issues/58)) ([fa3a521](https://github.com/googleapis/java-logging-servlet-initializer/commit/fa3a521875c4262851678ee3ac017c9e9d739635))
+
+
+### Miscellaneous Chores
+
+* fix release versions ([#59](https://github.com/googleapis/java-logging-servlet-initializer/issues/59)) ([e0158ed](https://github.com/googleapis/java-logging-servlet-initializer/commit/e0158ed69d2c0012f7569b13c8328486c5b9e990))
+
 ### [0.1.3-alpha](https://github.com/googleapis/java-logging-servlet-initializer/compare/v0.1.2-alpha...0.1.3-alpha) (2022-01-15)
 
 
