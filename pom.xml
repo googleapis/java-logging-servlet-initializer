@@ -20,7 +20,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>google-cloud-logging-servlet-initializer</artifactId>
-  <version>0.1.6-alpha</version><!-- {x-version-update:google-cloud-logging-servlet-initializer:current} -->
+  <version>0.1.7-alpha-SNAPSHOT</version><!-- {x-version-update:google-cloud-logging-servlet-initializer:current} -->
   <packaging>jar</packaging>
   <name>Google Cloud Logging Servlet Container Initializer</name>
   <url>https://github.com/googleapis/java-logging-servlet-initializer</url>
