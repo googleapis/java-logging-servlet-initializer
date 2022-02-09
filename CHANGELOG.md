@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.1.6-alpha](https://github.com/googleapis/java-logging-servlet-initializer/compare/v0.1.5-alpha...v0.1.6-alpha) (2022-02-08)
+
+
+### Bug Fixes
+
+* move META-INF folder to the correct location ([#72](https://github.com/googleapis/java-logging-servlet-initializer/issues/72)) ([6b81d99](https://github.com/googleapis/java-logging-servlet-initializer/commit/6b81d99ba57c57dcd218333761d2c0becfb35d8e))
+
 ### [0.1.5-alpha](https://github.com/googleapis/java-logging-servlet-initializer/compare/v0.1.4-alpha...v0.1.5-alpha) (2022-02-08)
 
 
