@@ -28,7 +28,7 @@
     <dependency>
       <groupId>com.google.cloud</groupId>
       <artifactId>google-cloud-logging-servlet-initializer</artifactId>
-      <version>0.1.7-alpha</version>
+      <version>0.1.8-alpha-SNAPSHOT</version>
     </dependency>
     <!-- {x-version-update-end} -->
 
