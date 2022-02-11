@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.1.7-alpha](https://github.com/googleapis/java-logging-servlet-initializer/compare/v0.1.6-alpha...v0.1.7-alpha) (2022-02-11)
+
+
+### Dependencies
+
+* update actions/github-script action to v6 ([#78](https://github.com/googleapis/java-logging-servlet-initializer/issues/78)) ([2be5e0f](https://github.com/googleapis/java-logging-servlet-initializer/commit/2be5e0f55bafb5ee9aeb5d84168deb4ef6996680))
+
 ### [0.1.6-alpha](https://github.com/googleapis/java-logging-servlet-initializer/compare/v0.1.5-alpha...v0.1.6-alpha) (2022-02-08)
 
 
