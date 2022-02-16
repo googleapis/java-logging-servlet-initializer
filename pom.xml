@@ -20,7 +20,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>google-cloud-logging-servlet-initializer</artifactId>
-  <version>0.1.5-alpha-SNAPSHOT</version><!-- {x-version-update:google-cloud-logging-servlet-initializer:current} -->
+  <version>0.1.9-alpha-SNAPSHOT</version><!-- {x-version-update:google-cloud-logging-servlet-initializer:current} -->
   <packaging>jar</packaging>
   <name>Google Cloud Logging Servlet Container Initializer</name>
   <url>https://github.com/googleapis/java-logging-servlet-initializer</url>
@@ -30,7 +30,7 @@
 
   <properties>
     <easymock.version>3.6</easymock.version>
-    <logging.version>3.6.1</logging.version>
+    <logging.version>3.6.3</logging.version>
     <jakarta.servlet.api.version>4.0.4</jakarta.servlet.api.version>  
     <jetty.version>9.4.44.v20210927</jetty.version>
     <tomcat.version>9.0.58</tomcat.version>
@@ -41,7 +41,7 @@
   <parent>
     <groupId>com.google.cloud</groupId>
     <artifactId>google-cloud-shared-config</artifactId>
-    <version>1.2.6</version>
+    <version>1.2.7</version>
   </parent>
 
   <developers>
@@ -164,7 +164,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-project-info-reports-plugin</artifactId>
-        <version>3.1.2</version>
+        <version>3.2.1</version>
         <reportSets>
           <reportSet>
             <reports>
@@ -191,7 +191,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.3.1</version>
+        <version>3.3.2</version>
         <reportSets>
           <reportSet>
             <id>html</id>
