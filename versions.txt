@@ -1,4 +1,4 @@
 # Format:
 # module:released-version:current-version
 
-google-cloud-logging-servlet-initializer:0.1.10-alpha:0.1.10-alpha
+google-cloud-logging-servlet-initializer:0.1.10-alpha:0.1.11-alpha-SNAPSHOT
