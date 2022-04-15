@@ -26,5 +26,6 @@ java.common_templates(excludes=[
     'CONTRIBUTING.md',
     # renovate.json is excluded to preserve fixed versions for web server dependencies
     # used for integration tests
-    'renovate.json'
+    'renovate.json',
+    '.github/auto-label.yaml'
 ])
