@@ -1,5 +1,18 @@
 # Changelog
 
+### [0.1.15-alpha](https://github.com/googleapis/java-logging-servlet-initializer/compare/v0.1.14-alpha...v0.1.15-alpha) (2022-04-16)
+
+
+### Bug Fixes
+
+* Reenable staleness bot ([#130](https://github.com/googleapis/java-logging-servlet-initializer/issues/130)) ([9852030](https://github.com/googleapis/java-logging-servlet-initializer/commit/9852030e9733186568a4b795942764e22bffeb68))
+
+
+### Dependencies
+
+* update dependency com.google.cloud:google-cloud-logging to v3.7.5 ([#133](https://github.com/googleapis/java-logging-servlet-initializer/issues/133)) ([63b6a17](https://github.com/googleapis/java-logging-servlet-initializer/commit/63b6a173195094c466cfc2e57b037d766eea074b))
+* update dependency com.google.cloud:google-cloud-shared-dependencies to v2.10.0 ([#131](https://github.com/googleapis/java-logging-servlet-initializer/issues/131)) ([aaacf2f](https://github.com/googleapis/java-logging-servlet-initializer/commit/aaacf2f64391eacb20bc9205d3fffcb08371ce1c))
+
 ### [0.1.14-alpha](https://github.com/googleapis/java-logging-servlet-initializer/compare/v0.1.13-alpha...v0.1.14-alpha) (2022-04-01)
 
 
