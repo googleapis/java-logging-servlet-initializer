@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.0-alpha](https://github.com/googleapis/java-logging-servlet-initializer/compare/v0.1.16-alpha...v0.2.0-alpha) (2022-05-19)
+
+
+### Features
+
+* add build scripts for native image testing in Java 17 ([#1440](https://github.com/googleapis/java-logging-servlet-initializer/issues/1440)) ([#148](https://github.com/googleapis/java-logging-servlet-initializer/issues/148)) ([e666361](https://github.com/googleapis/java-logging-servlet-initializer/commit/e666361b38b37b88f424103a31e0f523988ea3a1))
+
+
+### Dependencies
+
+* update dependency com.google.cloud:google-cloud-shared-dependencies to v2.11.0 ([#147](https://github.com/googleapis/java-logging-servlet-initializer/issues/147)) ([cfd4822](https://github.com/googleapis/java-logging-servlet-initializer/commit/cfd4822dc19eb2cc5d68d3d02b4519d21fdc3b57))
+
 ### [0.1.16-alpha](https://github.com/googleapis/java-logging-servlet-initializer/compare/v0.1.15-alpha...v0.1.16-alpha) (2022-05-04)
 
 
