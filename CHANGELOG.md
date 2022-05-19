@@ -1,5 +1,13 @@
 # Changelog
 
+### [0.2.1-alpha](https://github.com/googleapis/java-logging-servlet-initializer/compare/v0.2.0-alpha...v0.2.1-alpha) (2022-05-19)
+
+
+### Dependencies
+
+* update dependency com.google.cloud:google-cloud-logging to v3.8.0 ([#152](https://github.com/googleapis/java-logging-servlet-initializer/issues/152)) ([b07bc40](https://github.com/googleapis/java-logging-servlet-initializer/commit/b07bc40fff888bde1a41b5b0264b4abd68baa095))
+* update dependency com.google.cloud:google-cloud-shared-dependencies to v2.12.0 ([#153](https://github.com/googleapis/java-logging-servlet-initializer/issues/153)) ([12c5f22](https://github.com/googleapis/java-logging-servlet-initializer/commit/12c5f22933880c24d1f7ba4f1610425b87e75886))
+
 ## [0.2.0-alpha](https://github.com/googleapis/java-logging-servlet-initializer/compare/v0.1.16-alpha...v0.2.0-alpha) (2022-05-19)
 
 
