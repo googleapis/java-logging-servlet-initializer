@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.4-alpha](https://github.com/googleapis/java-logging-servlet-initializer/compare/v0.2.3-alpha...v0.2.4-alpha) (2022-07-13)
+
+
+### Bug Fixes
+
+* enable longpaths support for windows test ([#1485](https://github.com/googleapis/java-logging-servlet-initializer/issues/1485)) ([#172](https://github.com/googleapis/java-logging-servlet-initializer/issues/172)) ([98e7bde](https://github.com/googleapis/java-logging-servlet-initializer/commit/98e7bdea398eeb046bbe7189272e8aa3239f379a))
+
 ## [0.2.3-alpha](https://github.com/googleapis/java-logging-servlet-initializer/compare/v0.2.2-alpha...v0.2.3-alpha) (2022-06-30)
 
 
