@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.9-alpha](https://github.com/googleapis/java-logging-servlet-initializer/compare/v0.2.8-alpha...v0.2.9-alpha) (2022-09-28)
+
+
+### Dependencies
+
+* Update dependency google-auth to v2.12.0 ([#228](https://github.com/googleapis/java-logging-servlet-initializer/issues/228)) ([db830ab](https://github.com/googleapis/java-logging-servlet-initializer/commit/db830ab8f24eec3e82234ba40878f1adefd4affe))
+
 ## [0.2.8-alpha](https://github.com/googleapis/java-logging-servlet-initializer/compare/v0.2.7-alpha...v0.2.8-alpha) (2022-09-27)
 
 
