@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.10-alpha](https://github.com/googleapis/java-logging-servlet-initializer/compare/v0.2.9-alpha...v0.2.10-alpha) (2022-10-01)
+
+
+### Dependencies
+
+* Update dependency google-resumable-media to v2.4.0 ([#230](https://github.com/googleapis/java-logging-servlet-initializer/issues/230)) ([19b2a56](https://github.com/googleapis/java-logging-servlet-initializer/commit/19b2a56cb251cd767d3534a16a716838616367a3))
+* Update dependency protobuf to v3.20.3 ([#231](https://github.com/googleapis/java-logging-servlet-initializer/issues/231)) ([3d22780](https://github.com/googleapis/java-logging-servlet-initializer/commit/3d22780bb07c2b8d2f91f6494fe5d7ac06b9438f))
+
 ## [0.2.9-alpha](https://github.com/googleapis/java-logging-servlet-initializer/compare/v0.2.8-alpha...v0.2.9-alpha) (2022-09-28)
 
 
