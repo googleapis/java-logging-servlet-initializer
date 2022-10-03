@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.11-alpha](https://github.com/googleapis/java-logging-servlet-initializer/compare/v0.2.10-alpha...v0.2.11-alpha) (2022-10-03)
+
+
+### Dependencies
+
+* Update dependency com.google.cloud:google-cloud-logging to v3.11.4 ([#237](https://github.com/googleapis/java-logging-servlet-initializer/issues/237)) ([cb25d29](https://github.com/googleapis/java-logging-servlet-initializer/commit/cb25d298ade9f64ec5dd3bf0241f59da1a618390))
+* Update dependency com.google.cloud:google-cloud-shared-dependencies to v3.0.4 ([#241](https://github.com/googleapis/java-logging-servlet-initializer/issues/241)) ([5203283](https://github.com/googleapis/java-logging-servlet-initializer/commit/5203283fb1fcc1d83065f72019aa07f9e5d25570))
+* Update dependency gcp-releasetool to v1.8.9 ([#240](https://github.com/googleapis/java-logging-servlet-initializer/issues/240)) ([473daf2](https://github.com/googleapis/java-logging-servlet-initializer/commit/473daf2e88a36e21e7130836436e473fca24fe05))
+* Update dependency importlib-metadata to v4.13.0 ([#238](https://github.com/googleapis/java-logging-servlet-initializer/issues/238)) ([9d0b9bb](https://github.com/googleapis/java-logging-servlet-initializer/commit/9d0b9bb7d026e17f4d2ab730f9f1ead564cc1b8e))
+* Update dependency importlib-metadata to v5 ([#239](https://github.com/googleapis/java-logging-servlet-initializer/issues/239)) ([9b73e81](https://github.com/googleapis/java-logging-servlet-initializer/commit/9b73e81162179b8e670030b34a83c6ea0f7a9f7b))
+
 ## [0.2.10-alpha](https://github.com/googleapis/java-logging-servlet-initializer/compare/v0.2.9-alpha...v0.2.10-alpha) (2022-10-01)
 
 
