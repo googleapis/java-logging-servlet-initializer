@@ -30,7 +30,7 @@
 
   <properties>
     <easymock.version>3.6</easymock.version>
-    <logging.version>3.11.5</logging.version>
+    <logging.version>3.11.6</logging.version>
     <jakarta.servlet.api.version>4.0.4</jakarta.servlet.api.version>  
     <jetty.version>9.4.44.v20210927</jetty.version>
     <tomcat.version>9.0.68</tomcat.version>
