@@ -16,8 +16,8 @@
 
 package com.google.cloud.logging.servlet.it.container;
 
-import javax.servlet.Servlet;
-import javax.servlet.ServletContainerInitializer;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletContainerInitializer;
 
 public interface ServletContainer {
   void start() throws Exception;

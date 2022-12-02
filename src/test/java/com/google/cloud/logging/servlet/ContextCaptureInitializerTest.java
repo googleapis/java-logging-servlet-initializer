@@ -16,18 +16,19 @@
 
 package com.google.cloud.logging.servlet;
 
+import jakarta.servlet.DispatcherType;
+import jakarta.servlet.FilterRegistration;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import org.junit.Test;
+
+import java.util.EnumSet;
+
 import static org.easymock.EasyMock.createStrictMock;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.verify;
-
-import java.util.EnumSet;
-import javax.servlet.DispatcherType;
-import javax.servlet.FilterRegistration.Dynamic;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import org.junit.Test;
 
 public class ContextCaptureInitializerTest {
 
@@ -38,7 +39,7 @@ public class ContextCaptureInitializerTest {
   @Test
   public void testRegistration() throws ServletException {
     ServletContext mockedServletContext = createStrictMock(ServletContext.class);
-    Dynamic mockedDynamic = createStrictMock(Dynamic.class);
+    FilterRegistration.Dynamic mockedDynamic = createStrictMock(FilterRegistration.Dynamic.class);
     expect(mockedServletContext.addFilter("RequestContextFilter", RequestContextFilter.class))
         .andReturn(mockedDynamic)
         .once();

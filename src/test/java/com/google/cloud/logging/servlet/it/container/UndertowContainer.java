@@ -27,9 +27,10 @@ import io.undertow.server.handlers.PathHandler;
 import io.undertow.servlet.api.DeploymentInfo;
 import io.undertow.servlet.api.DeploymentManager;
 import io.undertow.servlet.api.ServletContainerInitializerInfo;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletContainerInitializer;
+
 import java.util.Collections;
-import javax.servlet.Servlet;
-import javax.servlet.ServletContainerInitializer;
 
 public class UndertowContainer implements ServletContainer {
   private Undertow server;

@@ -16,13 +16,14 @@
 
 package com.google.cloud.logging.servlet;
 
+import jakarta.servlet.DispatcherType;
+import jakarta.servlet.FilterRegistration.Dynamic;
+import jakarta.servlet.ServletContainerInitializer;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+
 import java.util.EnumSet;
 import java.util.Set;
-import javax.servlet.DispatcherType;
-import javax.servlet.FilterRegistration.Dynamic;
-import javax.servlet.ServletContainerInitializer;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 
 public class ContextCaptureInitializer implements ServletContainerInitializer {
 
