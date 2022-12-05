@@ -30,7 +30,7 @@
 
   <properties>
     <easymock.version>5.0.1</easymock.version>
-    <logging.version>3.13.2</logging.version>
+    <logging.version>3.13.4</logging.version>
     <jakarta.servlet.api.version>6.0.0</jakarta.servlet.api.version>
     <jetty.version>11.0.12</jetty.version>
     <tomcat.version>10.1.1</tomcat.version>
@@ -41,7 +41,7 @@
   <parent>
     <groupId>com.google.cloud</groupId>
     <artifactId>google-cloud-shared-config</artifactId>
-    <version>1.5.4</version>
+    <version>1.5.5</version>
   </parent>
 
   <developers>
