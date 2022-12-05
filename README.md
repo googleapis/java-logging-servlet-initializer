@@ -83,7 +83,8 @@ follow the
 
 ## Other dependencies
 
-The library uses Jakarta Servlet package version 4.0.4. Older versions of `javax.servlet` are not supported.
+The library uses Jakarta Servlet package version 6.0.0. Older versions of `javax.servlet` are not supported.  
+v0.2.13-alpha is the last version that builds on the Servlet API version 4.0.4. 
 
 ### For new development
 
