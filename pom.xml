@@ -34,7 +34,7 @@
     <jakarta.servlet.api.version>4.0.4</jakarta.servlet.api.version>  
     <jetty.version>9.4.44.v20210927</jetty.version>
     <tomcat.version>9.0.73</tomcat.version>
-    <undertow.version>2.2.19.Final</undertow.version>
+    <undertow.version>2.2.24.Final</undertow.version>
     <junit.version>4.13.2</junit.version>
   </properties>
 
