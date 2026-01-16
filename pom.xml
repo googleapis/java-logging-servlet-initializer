@@ -32,7 +32,7 @@
     <easymock.version>5.1.0</easymock.version>
     <logging.version>3.14.6</logging.version>
     <jakarta.servlet.api.version>4.0.4</jakarta.servlet.api.version>  
-    <jetty.version>9.4.51.v20230217</jetty.version>
+    <jetty.version>9.4.58.v20250814</jetty.version>
     <tomcat.version>9.0.106</tomcat.version>
     <undertow.version>2.2.24.Final</undertow.version>
     <junit.version>4.13.2</junit.version>
