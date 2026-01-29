@@ -10,7 +10,7 @@
     "repo": "googleapis/java-logging-servlet-initializer",
     "repo_short": "java-logging-servlet-initializer",
     "distribution_name": "com.google.cloud:google-cloud-logging-servlet-initializer",
-    "codeowner_team": "@googleapis/cloud-java-team-teamsync",
+    "codeowner_team": "@googleapis/cloud-sdk-java-team",
     "library_type": "OTHER",
     "api_id": "logging.googleapis.com"
   }
