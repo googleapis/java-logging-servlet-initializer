@@ -18,19 +18,20 @@ If you are using Maven, add this to your pom.xml file:
 <dependency>
   <groupId>com.google.cloud</groupId>
   <artifactId>google-cloud-logging-servlet-initializer</artifactId>
+  <version>v0.2.13-alpha</version>
 </dependency>
 ```
 
 If you are using Gradle without BOM, add this to your dependencies
 
 ```Groovy
-implementation 'com.google.cloud:google-cloud-logging-servlet-initializer'
+implementation 'com.google.cloud:google-cloud-logging-servlet-initializer:0.2.13-alpha'
 ```
 
 If you are using SBT, add this to your dependencies
 
 ```Scala
-libraryDependencies += "com.google.cloud" % "google-cloud-logging-servlet-initializer"
+libraryDependencies += "com.google.cloud" % "google-cloud-logging-servlet-initializer" % "0.2.13-alpha"
 ```
 
 ## Getting Started
